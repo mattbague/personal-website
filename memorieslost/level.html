@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src='lib/quintus.js'></script>
+		<script src='lib/quintus_audio.js'></script>
+        <script src='lib/quintus_sprites.js'></script>
+        <script src='lib/quintus_scenes.js'></script>
+        <script src='lib/quintus_input.js'></script>
+        <script src='lib/quintus_anim.js'></script>
+        <script src='lib/quintus_2d.js'></script>
+        <script src='lib/quintus_touch.js'></script>
+        <script src='lib/quintus_ui.js'></script>
+    </head>
+    <body style="background-color: black;">
+	<!-- Audio stuff-->
+		<audio id="bg_music" autoplay loop>
+			<source src="music/07 - Town.ogg" type="audio/ogg">
+			Your browser does not support the audio element.
+		</audio>
+		
+		<audio id="jump_fx" >
+			<source src="music/spin_jump.mp3" type="audio/mp3">
+			Your browser does not support the audio element.
+		</audio>
+		
+		<audio id="coin_fx" >
+			<source src="music/coin.wav" type="audio/wav">
+			Your browser does not support the audio element.
+		</audio>
+		
+		<audio id="confirm_fx" >
+			<source src="music/Confirm8-Bit.ogg" type="audio/ogg">
+			Your browser does not support the audio element.
+		</audio>
+		
+		<audio id="bounce_fx" >
+			<source src="music/Oddbounce.ogg" type="audio/ogg">
+			Your browser does not support the audio element.
+		</audio>		
+		
+		<script>
+			bg_music.volume=.7;
+			jump_fx.volume=.7;
+			coin_fx.volume=.4;
+			bounce_fx.volume = .5;
+		</script>	
+	<!-- End Audio stuff -->		
+	
+		
+        <script>
+		var memories_per_level = [4, 6, 3, 8];
+
+		var parts = window.location.search.substr(1).split("&");
+		var $_GET = {};
+		for (var i = 0; i < parts.length; i++) {
+			var temp = parts[i].split("=");
+			$_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+		}
+		
+        var Q = Quintus()
+            .include("Sprites, Scenes, Input, 2D, Touch, UI, Anim, Audio")
+            .setup({
+                //width: 960,
+                //height: 640,
+				width: 960,
+                height: 540,
+                development: true
+            }).controls().touch();
+		
+		Q.input.touchControls({
+			controls: [ ['left', '<'],
+						['right', '>'],
+						[],
+						['action','jump'],
+						['fire', 'dash']]
+		});
+		
+		Q.load("main_player.png, sprites.json", function(){
+			   Q.compileSheets("main_player.png", "sprites.json");
+		});
+		
+		Q.animations('player', {
+			 run_right: { frames: [6,7,8], rate: 1/10},
+			 run_left: { frames: [3,4,5], rate:1/10 },
+			 stand_right: { frames: [7], rate: 1/5 },
+			 stand_left: { frames: [4], rate: 1/5 }
+		 });
+		 
+		 
+			  
+        //player
+        Q.Sprite.extend("Player",{
+            init: function(p) { //x:50 y:600
+						this._super(p, { sprite: "player",sheet: "player", x: 50, y: 500, jumpSpeed: -380, coins: 0});
+				  this.add('2d, platformerControls, animation');
+						this.play("stand_right");
+			  },
+            step: function(dt) {
+                if(Q.inputs['fire'] && this.p.direction == 'left') {				
+                    this.p.x -= 3;
+                }
+                else if(Q.inputs['fire'] && this.p.direction == 'right') {
+                    this.p.x += 3;
+                }			
+				else if(Q.inputs['action'] && this.p.vy == 0) {
+					jump_fx.play();
+				}
+				else if(Q.inputs['left']) {
+					this.play('run_left');
+				}
+				else if(Q.inputs['right']) {
+					this.play('run_right');
+				}
+				else if(this.p.direction == 'left') {
+					this.play('stand_left');
+				}
+				else if (this.p.direction == 'right') {
+					this.play('stand_right');
+				}	
+            }
+          });
+		  
+		 Q.Sprite.extend("Coin", {
+			init: function(p) {
+				this._super(p, {asset: "memory.png"});
+				
+				 this.on("hit",function(collision) {
+					 if(collision.obj.isA("Player")) {
+						 this.destroy();
+						 collision.obj.p.coins++;
+						 coin_fx.play();
+						 var coinsLabel = Q("UI.Text",1).items[1];
+						 coinsLabel.p.label = 'Memories: '+collision.obj.p.coins+' / '+memories_per_level[($_GET['lvl'] - 1)];
+					 }
+				 });
+			},
+			step: function(dt){
+				//this.stage.collide(this);
+			}
+		});
+		
+		Q.Sprite.extend("Tramp", {
+			init: function(p) {
+				this._super(p, {asset: "tramp.png"});
+				
+				this.add('2d, aiBounce');
+
+				this.on("bump.top",function(collision) {
+					if(collision.obj.isA("Player")) {
+						bounce_fx.play();
+						collision.obj.p.vy = -500;
+					}
+				});
+			},
+			
+			step: function(dt){
+				this.stage.collide(this);
+			}
+		});
+
+		Q.Sprite.extend("Goal", {
+			init: function(p) {
+				this._super(p, {asset: "goal.png"});
+				
+				 this.on("hit",function(collision) {
+					 if(collision.obj.isA("Player") && collision.obj.p.coins >= memories_per_level[($_GET['lvl'] - 1)]) {
+						confirm_fx.play();
+						Q.stageScene("endGame",1, { label: "Memories Returned!" });
+						collision.obj.destroy();
+						this.destroy();
+					 }
+				 });
+			},
+		});
+		
+        
+        Q.scene("level"+$_GET['lvl'],function(stage) {
+          
+            var background = new Q.TileLayer({ dataAsset: 'level'+$_GET['lvl']+'.tmx', layerIndex: 0, sheet: 'tiles', tileW: 32, tileH: 32, type: Q.SPRITE_NONE });
+            stage.insert(background);
+            
+            stage.collisionLayer(new Q.TileLayer({ dataAsset: 'level'+$_GET['lvl']+'.tmx', layerIndex:1,  sheet: 'tiles', tileW: 32, tileH: 32 }));
+          
+            var player = stage.insert(new Q.Player());
+			 
+			 //NOTE: HAD TO ADD THE OFFSET CAUSE I SCREWED UP THE LEVEL DESIGN.
+			 var levelAssets;
+			 if($_GET['lvl'] == "1"){
+				levelAssets = [
+					["Coin", {x: 224, y: 912 - 190}],
+					["Coin", {x: 704, y: 872 - 190}],
+					["Coin", {x: 1024, y: 872 - 190}],
+					["Coin", {x: 1408, y: 844 - 190}],
+					["Goal", {x: 1960, y: 912 - 190}]
+				];
+			 }else if($_GET['lvl'] == "2"){
+				 levelAssets = [
+					["Coin", {x: 592, y: 450 - 190}],
+					["Coin", {x: 910, y: 450 - 190}],
+					["Coin", {x: 192, y: 780 - 190}],
+					["Coin", {x: 1360, y: 420 - 190}],
+					["Coin", {x: 1970, y: 400 - 190}],
+					["Coin", {x: 1100, y: 912 - 190}],					
+					["Goal", {x: 1140, y: 464 - 190}]
+					
+				];
+			 }else if($_GET['lvl'] == "3"){
+				levelAssets = [
+					["Coin", {x: 494, y: 494 - 190}],
+					["Tramp", {x: 494, y: 912 - 190}],
+					["Tramp", {x: 385, y: 816 - 190}],
+					["Tramp", {x: 258, y: 720 - 190}],
+					["Tramp", {x: 416, y: 626 - 190}],
+					["Tramp", {x: 306, y: 464 - 190}],
+					["Coin", {x: 920, y: 238 - 190}],
+					["Tramp", {x: 1030, y: 912 - 190}],
+					["Coin", {x: 1086, y: 755 - 190}],
+					["Goal", {x: 1890, y: 912 - 190}]
+				];						
+			 }else if($_GET['lvl'] == "4"){
+				levelAssets = [
+					["Coin", {x: 300, y: 100}],
+					["Coin", {x: 360, y: 120}],
+					["Coin", {x: 420, y: 140}],
+					["Coin", {x: 480, y: 160}],
+					["Coin", {x: 800, y: 500}],
+					["Coin", {x: 860, y: 500}],
+					["Coin", {x: 920, y: 500}],
+					["Coin", {x: 980, y: 500}],
+					["Tramp", {x: 700, y: 33 * 16}],
+					["Goal", {x: 33 * 36, y: 33 * 17}]
+				];		
+			}				
+            //load level assets
+            stage.loadAssets(levelAssets);
+            
+            stage.add("viewport").follow(player,{x: true, y: true},{minX: 0, maxX: background.p.w, minY: 0, maxY: background.p.h});
+          
+        });
+		
+		Q.scene("gameStats", function(stage) {
+			var statsContainer = stage.insert(new Q.UI.Container({
+				fill: "rgba(0,0,0,0.3)",
+				x: 960/2,
+				y: 20,
+				w: 960,
+				h: 40
+				})
+			);
+				
+			var lives = stage.insert(new Q.UI.Text({ 
+					label: "",
+					color: "white",
+					x: -300,
+					y: 0
+				}),statsContainer);
+			
+			var coins = stage.insert(new Q.UI.Text({ 
+					label: "Memories: 0 / " + memories_per_level[($_GET['lvl'] - 1)],
+					color: "white",
+					x: 0,
+					y: 0
+				}),statsContainer);
+		});
+        
+
+		Q.scene('endGame',function(stage) {
+		  var container = stage.insert(new Q.UI.Container({
+			x: Q.width/2, y: Q.height/2, fill: "rgba(255,215,0,0.9)"
+		  }));
+		  
+		  var button = container.insert(new Q.UI.Button({ x: 10, y: 0, fill: "#CCCCCC", label: "Exit Level" }))         
+		  var label = container.insert(new Q.UI.Text({x:10, y: -10 - button.p.h, label: stage.options.label }));
+		  // When the button is clicked, clear all the stages
+		  // and restart the game.
+		  button.on("click",function() {
+			if ($_GET['lvl'] < 8) {				
+				localStorage.setItem("progress", parseInt($_GET['lvl']) + 1);
+			}
+			window.location = 'postlevel.html?lvl='+$_GET['lvl'];
+			
+			//Q.clearStages();
+			//Q.stageScene('level1');
+		  });
+		  
+		  // Expand the container to visibily fit it's contents
+		  container.fit(20);
+		});		
+        
+        //load assets
+        Q.load("tiles_map.png, player.png, memory.png, goal.png, tramp.png, level"+$_GET['lvl']+".tmx", function() {
+          Q.sheet("tiles","tiles_map.png", { tilew: 32, tileh: 32});          
+          Q.stageScene("level"+$_GET['lvl']);
+		   Q.stageScene("gameStats",1);
+        });
+        
+        
+        </script>
+    </body>
+</html>

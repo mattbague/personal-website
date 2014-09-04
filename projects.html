@@ -1,0 +1,155 @@
+                                <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">	
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+        <link rel="icon" type="image/png" href="icons/site_logo.png"/>
+        <title>Projects</title>
+        <script type="text/javascript" src="site_scripts.js"> </script>
+    </head>
+    <body>    	
+		<div class="header"> </div>
+		<div id="container">
+    		<div class="content">
+    			<h1> Projects </h1>	
+    			<ul style="padding: 1em;">   
+            	<li >
+						<span>DBMS for XML Documents</span><a class="toggle_visibility_button" id="xmldb_header" onclick="toggle_visibility('xmldb');">[show]</a>				
+						<div id="xmldb" style="display: none" class='projects'>
+							<p>
+                     <strong>Language(s) Used:</strong> C
+							<br>
+                     <strong>Work Date: </strong> September 2013 - December 2013
+                     <br>
+							<strong>Summary:</strong> A NoSQL DBMS written in C by a team of four. Parses XML documents using SAX. Data records are stored using a heap file organization and a sparse index is used indexing of the records. Queries were implemented using a simplified version of XPath.
+                     </p>
+						</div>
+					</li>	 
+					<li >
+						<span>This Website</span><a class="toggle_visibility_button" id="MyWebsite_header" onclick="toggle_visibility('MyWebsite');">[show]</a>				
+						<div id="MyWebsite" style="display: none" class='projects'>
+							<p>
+                     <strong>Language(s) Used:</strong> JavaScript, HTML, CSS
+							<br>
+                     <strong>Work Date: </strong> June 2013 - Ongoing
+                     <br>
+							<strong>Summary:</strong> I began working on this website in my free time during the summer of 2013. Rather than limiting myself
+                     to just a paper resume, I thought a having website would be a nice alternative for prospective employers to check out who I am.
+                     </p>
+						</div>
+					</li>	 			
+					<li>
+						<span>Brawl Card Game</span><a class="toggle_visibility_button" id="Brawl_header" onclick="toggle_visibility('Brawl');"> [show]</a>				
+						<div id="Brawl" style="display: none" class='projects'>
+                     <p>
+							<strong>Language(s) Used:</strong> Java
+							<br>
+                     <strong>Work Date: </strong> January 2013 - June 2013
+                     <br>
+							<strong>Summary:</strong> For two quarters, I worked with the same team of 7 in order to implement a computer game version of the
+                     fighting card game <a href="http://www.cheapass.com/node/72"> Brawl</a>. For the first quarter,
+                     we did requirements analysis and high level design. I was personally in charge creating a UI prototype and presenting it to our team
+                     and then the class. For the second quarter, I was system architect and was responsible for maintaining our high level design, confirming
+                     our project was being implemented as designed, and handling change requests. I also helped out where needed such as with the SRS and test plan.
+                     </p>
+                  </div>						
+				   	</li>
+				   	<li>
+				   		<span>Hotel Database Management Tool</span><a class="toggle_visibility_button" id="Hotel_header" onclick="toggle_visibility('Hotel');"> [show]</a>				
+						<div id="Hotel" style="display: none" class='projects'>
+							<p>
+                     <strong>Language(s) Used:</strong> SQL, Java
+							<br>
+                     <strong>Work Date: </strong> March 2013
+                     <br>                     
+							<strong>Summary:</strong> Over the course of a month or so, I worked with two others in order to implement a database management tool for a fictitious hotel. 
+                     I set up the initial GUI which consisted of three main layouts based on role: Customer, Business Owner, System Administrator. From there, we each took on one of
+                     the previously mentioned parts and implemented it. I was in charge of creating queries for customers and providing them information such as room availability,
+                     room rates, and so on.
+                     </p>
+                  </div>	
+				   	</li>		
+					<li>
+						<span>Text File Archiver</span><a class="toggle_visibility_button" id="Archiver_header" onclick="toggle_visibility('Archiver');"> [show]</a>				
+						<div id="Archiver" style="display: none" class='projects'>
+							<p>
+                     <strong>Language(s) Used:</strong> C
+						<br>
+                     <strong>Work Dates: </strong> March 2012 - June 2012
+                     <br>                     
+							<strong>Summary:</strong> A Linux compression utility for simple text files. The program uses the Lempel–Ziv–Welch (LZW) algorithm 
+                     to compress the data. It contains both the ability to compress and decompress from the command line. A maximum
+                     dictionary code along with a free list to manage the use of system resources.
+                     </p>
+                  </div>					
+					</li>		
+					<li>
+						<span>Take The Tub - Android Game</span><a class="toggle_visibility_button" id="TakeTheTub_header" onclick="toggle_visibility('TakeTheTub');"> [show]</a>				
+						<div id="TakeTheTub" style="display: none" class='projects'>
+							<p>
+                     <strong>Languages Used: </strong> App Inventor, Java, XML
+							<br>
+                     <strong>Work Dates: </strong> September 2010 - October 2010
+                     <br>                     
+							<strong>Summary: </strong> This was the first Android application I made as well as my first major assignment in college. I was
+                     paired with a good friend and we both agreed we wanted to make an NES-styled (8 bit) game. It was a small "shoot 'em up" game where the
+                     player played as a rubber duck in a bath tub which shot bubbles to destroy enemies. It was well received by our professor and classmates
+                     and we even got a bag of candy for how good it was, haha.
+                     </p>
+                  </div>						
+					</li>			
+				</ul>
+        	</div>
+    			
+    		<div id="nav" class="navbar"> 
+		        <a href="http://www.mattbague.com/about.html"><div id="level1" class="level" 
+		        	onmouseover="swapIcons('icons/about_icon_hl.png', 'icon1')"
+		        	onmouseout="swapIcons('icons/about_icon.png', 'icon1')">
+		        	About Me
+		        	<img id="icon1" src="icons/about_icon.png"/>
+		        </div></a>
+	
+		        <a href="http://www.mattbague.com/skills.html"><div id="level2" class="level"
+					onmouseover="swapIcons('icons/skills_icon_hl.png', 'icon2')"
+		        	onmouseout="swapIcons('icons/skills_icon.png', 'icon2')">
+		        	Skills <img id="icon2" src="icons/skills_icon.png"/> 
+		        </div></a>
+	
+		        <a href="http://www.mattbague.com/work.html"><div id="level3" class="level"
+		        	onmouseover="swapIcons('icons/work_icon_hl.png', 'icon3')"
+		        	onmouseout="swapIcons('icons/work_icon.png', 'icon3')">
+		        	Work Experience <img id="icon3" src="icons/work_icon.png"/>
+		        </div></a>
+					
+		        <a href="http://www.mattbague.com/projects.html"><div id="level4" class="level selected">
+		        	Projects <img id="icon4" src="icons/projects_icon_hl.png"/>
+		        </div></a>
+	
+		        <a href="http://www.mattbague.com/interests.html"><div id="level5" class="level"
+					onmouseover="swapIcons('icons/interests_icon_hl.png', 'icon5')"
+		        	onmouseout="swapIcons('icons/interests_icon.png', 'icon5')">
+		        	Interests <img id="icon5" src="icons/interests_icon.png"/> 
+		        </div></a>	       
+
+		        <a href="http://www.mattbague.com/contact.html"><div id="level6" class="level"
+		        	onmouseover="swapIcons('icons/contact_icon_hl.png', 'icon6')"
+		        	onmouseout="swapIcons('icons/contact_icon.png', 'icon6')">
+		        	Contact Me <img id="icon6" src="icons/contact_icon.png"/>
+		        </div></a>
+		        
+		   		<a href="http://www.mattbague.com/index.html"><div id="level7" class="level"
+		        	onmouseover="swapIcons('icons/home_icon_hl.png', 'icon7')"
+		        	onmouseout="swapIcons('icons/home_icon.png', 'icon7')">
+		        	Home <img id="icon7" src="icons/home_icon.png"/>
+		        </div></a>		
+			</div>
+		</div>
+       	<div class="footer">
+		<p>Hosting provided by <a href="http://vlexofree.com/">VlexoFree Hosting</a>&nbsp;|&nbsp;Updated September 2013</p>
+		</div>
+    </body>
+</html>
+
+                            
