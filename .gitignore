@@ -1,4 +1,5 @@
 # exclude the following
 *~
 *.sh.kate-swp
-
+.idea
+*.iml

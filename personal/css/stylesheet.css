@@ -7,7 +7,7 @@
 
 @font-face {
 	font-family: 'linowrite';
-	src: url('fonts/linowrite.ttf'); 
+	src: url('../../../fonts/linowrite.ttf');
 }
 
 .bio {
