@@ -2,12 +2,20 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+
     <title></title>
 
-    <script data-main="personal/js/app" src="personal/js/lib/require-min.js"></script>
+    <link type="text/css" rel="stylesheet" href="personal/css/stylesheet.css"/>
+    <link rel="icon" type="image/png" href="personal/images/favicon.ico"/>
 
+    <script src="personal/js/lib/require-min.js"></script>
+    <script src="personal/js/require-config.js"></script>
 </head>
 <body>
+
+<script>
+    requirejs(["app"]);
+</script>
 
 </body>
 </html>

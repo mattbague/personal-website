@@ -5,10 +5,10 @@
 	margin: 0;
 }
 
-@font-face {
+/* @font-face {
 	font-family: 'linowrite';
 	src: url('../../../fonts/linowrite.ttf');
-}
+} */
 
 .bio {
    line-height:28px; 
@@ -21,6 +21,7 @@ html, body, #container {
 
 a {
 	text-decoration: none;
+    cursor: pointer; cursor: hand;
 }
 
 #container {
@@ -244,32 +245,32 @@ body > #container {
 	7px 8px 1px #95786A;		
 }
 
-#level1 {
+#about {
 	width: 100%;
 	margin-top: 0;
 }
 
-#level2 {
+#skills {
 	width: 91%;
 }
 
-#level3 {
+#experience {
 	width: 82%;
 }
 
-#level4 {
+#projects {
 	width: 73%;
 }
 
-#level5 {
+#interests {
 	width: 64%;
 }
 
-#level6 {
+#contact {
 	width: 55%;
 }
 
-#level7 {
+#home {
 	width: 46%;
 }
 
