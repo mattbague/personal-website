@@ -1,12 +1,7 @@
+/* global define, require, console */
 
 define(["jquery"],  function($) {
-    function create() {
-        document.title = "Contact - mattbague.com";
-        $("body").empty();
-        $("body").append("<div>Contact me</div>");
-    }
+    document.title = "Contact - mattbague.com";
 
-    return {
-        create: create
-    };
+    return $('<div class=".section">Contact</div>');
 });

@@ -1,30 +1,12 @@
 /* jshint undef: true, unused: true */
-/* global define, require */
+/* global define, require, console */
 
-define(["jquery", "app/personalLayout"], function($, layout) {
-    "use strict";
-    var hashValue = window.location.hash.substr(1);
+define(["jquery", "app/layout", "jquery_ui"], function($, Layout) {
 
-    function setupLayout() {
-        $( document ).ready(
-            $("body").append(layout.create())
-        );
-    }
+    var opts = {
+            pathname: window.location.pathname
+        },
+        layout = Layout(opts);
 
-    function createPageFromFragment() {
-        if (hashValue) {
-            require([("app/" + hashValue)], function(onSuccess) {
-                onSuccess.create();
-            });
-        }
-        else {
-            require(["app/home"], function(onSuccess) {
-                onSuccess.create();
-            });
-        }
-    }
-
-
-    setupLayout();
-    createPageFromFragment();
+    $('body').append(layout.$el);
 });

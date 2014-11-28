@@ -1,12 +1,6 @@
 
 define(["jquery"],  function($) {
-    function create() {
-        document.title = "Experience - mattbague.com";
-        $("body").empty();
-        $("body").append("<div>Experience me</div>");
-    }
+    document.title = "Experience - mattbague.com";
 
-    return {
-        create: create
-    };
+    return $('<div class=".section">Experience</div>');
 });

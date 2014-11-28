@@ -1,9 +1,7 @@
-define(["jquery"],  function($) {
-    function create() {
-        document.title = "Home - mattbague.com";
-    }
+/* global define, require, console */
 
-    return {
-        create: create
-    };
+define(["jquery"],  function($) {
+    document.title = "Home - mattbague.com";
+
+    return $('<div class=".section">Home</div>');
 });
