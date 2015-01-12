@@ -1,6 +1,6 @@
 define(["jquery"], function ($) {
     var section = $('<div></div>').addClass('section'),
-        sectionTitle = $('<h3></h3>').addClass('section-title').html('"The most complicated skill is to be simple."<br/>- Dejan Stojanovic'),
+        header = $('<h3></h3>').addClass('section-header').html('"The most complicated skill is to be simple."<br/>- Dejan Stojanovic'),
     // TODO: Read these lists from some sort of database or file...
         languagesSubsection = createSubsection('Languages', ['Java', 'JavaScript', 'Groovy', 'SQL', 'Objective-C']),
         frameworkAndLibrarySubsection = createSubsection('Frameworks/Libraries', ['require', 'JSON', 'jQuery + UI', 'React', 'Spring', 'JUnit/QUnit', 'Jackson', 'Spock', 'Mockito']),
@@ -23,7 +23,7 @@ define(["jquery"], function ($) {
     }
 
     section
-        .append(sectionTitle)
+        .append(header)
         .append(languagesSubsection)
         .append(frameworkAndLibrarySubsection)
         .append(methodologiesSubsection)

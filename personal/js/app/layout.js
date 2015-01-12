@@ -59,13 +59,13 @@ define(["jquery"], function ($) {
         });
 
         navSection
+            .append(buttons.home)
             .append(buttons.about)
             .append(buttons.skills)
             .append(buttons.experience)
             .append(buttons.projects)
             .append(buttons.interests)
-            .append(buttons.contact)
-            .append(buttons.home);
+            .append(buttons.contact);
 
         $.each(buttonNames, function (key) {
             navSection.find("#" + key).click(function () {

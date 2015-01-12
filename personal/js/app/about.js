@@ -4,7 +4,7 @@
 define(["jquery"], function ($) {
     var section = $('<div></div>').addClass('section'),
         tableContainer = $('<table border=0></table>'),
-        sectionTitle = $('<h3></h3>').addClass('section-title').html('"I don\'t like that man. I must get to know him better."<br/>- Abraham Lincoln'),
+        header = $('<h3></h3>').addClass('section-header').html('"I don\'t like that man. I must get to know him better."<br/>- Abraham Lincoln'),
         basicInfoRow = createBasicInfoRow(),
         descriptionRow = createDescriptionRow();
 
@@ -49,8 +49,8 @@ define(["jquery"], function ($) {
 
         // TODO: Have the text come from a database/local file
         paragraph1.text('I\'m a fairly recent computer science graduate who\'s diving into the profession of software engineering');
-        paragraph2.text('Here\'s a bit of my personal background. Since the day I was born, I grew up in California, ' +
-        'specifically the greater Los Angeles area. I grew up in a family of six and luckily we all get along... for the ' +
+        paragraph2.text('Here\'s a bit of my personal background. I grew up in California, ' +
+        'specifically the greater Los Angeles area. I come from a family of six and luckily we all get along... for the ' +
         'most part. Growing up in a large family has taught me many things, such as getting along in frustrating situations ' +
         'and learning when to go with the flow or hold my ground.');
         paragraph3.text('Coming from a big family, you might think I\'d be on the louder and rowdier side, but actually,' +
@@ -73,7 +73,7 @@ define(["jquery"], function ($) {
         .append(descriptionRow);
 
     section
-        .append(sectionTitle)
+        .append(header)
         .append(tableContainer);
 
 
