@@ -1,6 +1,6 @@
-define(["jquery"], function ($) {
+define(["jquery", "app/utils"], function ($, Utils) {
     var section = $('<div></div>').addClass('section'),
-        header = $('<h3></h3>').addClass('section-header').html('"The most complicated skill is to be simple."<br/>- Dejan Stojanovic'),
+        header = Utils.createHeader('"The most complicated skill is to be simple."', '- Dejan Stojanovic'),
     // TODO: Read these lists from some sort of database or file...
         languagesSubsection = createSubsection('Languages', ['Java', 'JavaScript', 'Groovy', 'SQL', 'Objective-C']),
         frameworkAndLibrarySubsection = createSubsection('Frameworks/Libraries', ['require', 'JSON', 'jQuery + UI', 'React', 'Spring', 'JUnit/QUnit', 'Jackson', 'Spock', 'Mockito']),

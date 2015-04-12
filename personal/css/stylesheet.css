@@ -37,8 +37,11 @@ td > .bio-image {
 html {
     height: 100%;
     overflow-y: scroll;
-    background-color: #DEF2FF;
-    background: url('../images/pattern-dmxt.png');
+    /*background-color: #DEF2FF;*/
+    /*background: url('../images/pattern-dmxt.png');*/
+    background-color: #f6f6f6;
+    background-image: url('../images/notebook-dark.png');
+    /*http://www.transparenttextures.com*/
 }
 
 body {
@@ -178,7 +181,16 @@ a {
 .section-header {
     text-align: center;
     font-style: italic;
+    padding: 14px;
     color: #6B6D70;
+}
+
+.section-header-quote {
+    font-size: 24px;
+}
+
+.section-header-author {
+    text-align: right;
 }
 
 .level {
@@ -333,18 +345,13 @@ a {
     vertical-align: middle;
 }
 
+.email-image {
+    height: 60px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
 .email-form {
-    border: dashed 1px;
-    padding: 12px;
-}
-
-.email-form label {
-    padding-right: 12px;
-}
-
-.email-form-header {
-    text-align: center;
-    padding: 12px;
 }
 
 .form-component {

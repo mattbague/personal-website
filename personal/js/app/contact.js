@@ -1,20 +1,23 @@
 /* global define, require, console */
 
-define(["jquery"], function ($) {
+define(["jquery", "app/utils"], function ($, Utils) {
     var section = $('<div class=".section"></div>'),
-        header = $('<h3></h3>').addClass('section-header').html('"Social media allows me to pick my times for social interaction."<br/>- Guy Kawasaki'),
-        linkedinEntry = getContactFor('icons/linked.png', 'Connect with me on LinkedIn', 'http://www.linkedin.com/in/matthewbague', 'linkedin-image'),
-        phoneEntry = getContactFor('icons/phone.png', '805.630.8700 (Cell)', '', 'phone-image'),
+        iconsPath = "personal/images/",
+        header = Utils.createHeader('"Social media allows me to pick my times for social interaction."', '- Guy Kawasaki'),
+        linkedinEntry = getContactFor(iconsPath + '/linked.png', 'Connect with me on LinkedIn', 'http://www.linkedin.com/in/matthewbague', 'linkedin-image'),
+        phoneEntry = getContactFor(iconsPath + '/phone.png', '805.630.8700 (Cell)', 'tel:8056308700', 'phone-image'),
         emailEntry = getEmailForm(sendEmailForm());
+
 
     function getContactFor(image, text, link, imageClass) {
         var linkContainer = $('<div></div>'),
-            linkOut = $('<a></a>').attr('src', link).attr('target', '_blank').text(text).addClass('contact-link'),
+            linkOut = $('<a></a>').attr('href', link).attr('target', '_blank').text(text).addClass('contact-link'),
             linkImage = $('<img/>').attr('src', image).addClass(imageClass);
 
+        linkOut.prepend(linkImage);
+
         linkContainer
-            .append(linkImage)
-            .append(linkOut)
+            .append(linkOut);
 
         return linkContainer;
     }
@@ -22,7 +25,7 @@ define(["jquery"], function ($) {
     function createFormComponent(formType, labelText, name) {
         var textInputContainer = $('<div></div>').addClass('form-component'),
             textLabel = $('<label for="' + name + '"></label>').text(labelText + ':'),
-            textInput = $('<input type="' + formType + '" name="' + name + '">');
+            textInput = $('<input type="' + formType + '" name="' + name + '">').attr('size', 30);
 
         textInputContainer
             .append(textLabel)
@@ -49,20 +52,21 @@ define(["jquery"], function ($) {
     }
 
     function getEmailForm(onSend) {
-        var formContainer = $('<div></div>').addClass('email-form'),
-            form = $('<form></form>').submit(function() {
+        var formContainer = $('<div></div>'),
+            form = $('<form></form>').addClass('email-form').submit(function () {
                 form.preventDefault();
-                form.each(function() {
+                form.each(function () {
                         this.text('');
                     }
                 );
                 return false;
             }),
-            formTitle = $('<h3></h3>').text('Send me a message!').addClass('email-form-header'),
-            senderInput = createFormComponent('text', 'Name', 'sender'),
-            replyToInput = createFormComponent('email', 'E-mail', 'email'),
-            companyInput = createFormComponent('text', 'Company', 'company'),
-            emailMessage = createTextField(68, 10, 'Message', 'message'),
+            formImage = $('<img/>').attr('src', iconsPath + 'email.png').addClass('email-image'),
+            formTitle = $('<h2/>').text('Send me a message below!').addClass('email-form-header').prepend(formImage),
+            senderInput = createFormComponent('text', 'Your Name', 'sender'),
+            replyToInput = createFormComponent('email', 'Your E-mail', 'email'),
+            companyInput = createFormComponent('text', 'Your Company', 'company'),
+            emailMessage = createTextField(60, 10, 'Message', 'message'),
             submitButton = $('<input type="button"/>').val('Submit').addClass('form-component');
 
         form
@@ -83,7 +87,8 @@ define(["jquery"], function ($) {
         .append(header)
         .append(linkedinEntry)
         .append(phoneEntry)
-        .append(emailEntry);
+        //.append(emailEntry);
+    ;
 
     return section;
 });

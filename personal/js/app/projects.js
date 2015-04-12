@@ -1,8 +1,7 @@
 
-define(["jquery"],  function($) {
+define(["jquery", "app/utils"],  function($, Utils) {
     var section = $('<div class=".section"></div>'),
-        header = $('<h3></h3>').addClass('section-header').html('"The best way to get a project done faster is to start sooner."<br />- Jim Highsmith');
-
+        header = Utils.createHeader('"The best way to get a project done faster is to start sooner."', '- Jim Highsmith');
 
     section.append(header);
 

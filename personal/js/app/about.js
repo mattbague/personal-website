@@ -1,10 +1,10 @@
 /* global define, require, console */
 
 
-define(["jquery"], function ($) {
+define(["jquery", "app/utils"], function ($, Utils) {
     var section = $('<div></div>').addClass('section'),
         tableContainer = $('<table border=0></table>'),
-        header = $('<h3></h3>').addClass('section-header').html('"I don\'t like that man. I must get to know him better."<br/>- Abraham Lincoln'),
+        header = Utils.createHeader('"I don\'t like that man. I must get to know him better."', '- Abraham Lincoln'),
         basicInfoRow = createBasicInfoRow(),
         descriptionRow = createDescriptionRow();
 
@@ -67,7 +67,6 @@ define(["jquery"], function ($) {
         return descriptionRow;
     }
 
-
     tableContainer
         .append(basicInfoRow)
         .append(descriptionRow);
@@ -75,7 +74,6 @@ define(["jquery"], function ($) {
     section
         .append(header)
         .append(tableContainer);
-
 
     return section;
 });
