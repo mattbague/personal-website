@@ -4,3 +4,4 @@
 .idea
 *.iml
 .htaccess
+node_modules/

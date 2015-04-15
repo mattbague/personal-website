@@ -1,0 +1,22 @@
+{
+  "name": "personal-website",
+  "version": "0.0.0",
+  "description": "personal-website ================",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "~3.8.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattbague/personal-website.git"
+  },
+  "author": "Matt Bague",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/mattbague/personal-website/issues"
+  }
+}
