@@ -3,3 +3,4 @@
 *.sh.kate-swp
 .idea
 *.iml
+.htaccess
