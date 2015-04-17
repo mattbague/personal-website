@@ -3,7 +3,7 @@
 define(["jquery", "app/utils"],  function($, Utils) {
     var section = $('<div class=".section"></div>'),
         header = Utils.createHeader('"The best way to get a project done faster is to start sooner."', '- Jim Highsmith'),
-        githubLink = $('<a/>').text('Check out my GitHub!').attr('href', 'https://github.com/mattbague').addClass('contact-link'),
+        githubLink = $('<a/>').text('Check out my GitHub!').attr('href', 'https://github.com/mattbague').attr('target', '_blank').addClass('contact-link'),
         githubImg = $('<img/>').attr('src', 'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png').addClass('email-image'),
         githubDiv = $('<div/>');
 
