@@ -69,7 +69,7 @@ define(["jquery"], function ($) {
 
         $.each(buttonNames, function (key) {
             navSection.find("#" + key).click(function () {
-                //history.pushState({page: window.location.pathname}, '', key);
+                history.pushState({page: window.location.pathname}, '', key);
                 require([("app/" + key)], function (section) {
                     changeContent(key, section);
                 });
@@ -113,7 +113,7 @@ define(["jquery"], function ($) {
     return function (opts) {
         createLayout();
         handlePathname(opts.pathname);
-        //window.onpopstate = handleHistoryPopState();
+        window.onpopstate = handleHistoryPopState();
 
         return {
             $el: container
