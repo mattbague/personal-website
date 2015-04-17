@@ -4,5 +4,5 @@ define(["jquery"],  function($) {
 
     document.title = "Home - mattbague.com";
 
-    return $('<div class=".section">Home<br/> More to come. Stuff under construction yo.</div>');
+    return $('<div/>').addClass('section').text('Welcome to Matt Bague\'s website! Navigate using the buttons on the left.');
 });

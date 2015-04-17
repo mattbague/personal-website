@@ -10,12 +10,12 @@ define(["jquery", "app/utils"], function ($, Utils) {
 
     function getQuickInfoPairingList() {
         return [
-            ['Name is', 'Matt Bague'],
+            ['Name', 'Matt Bague'],
             ['Employed at', 'CJ Affiliate by Conversant'],
-            ['With the title', 'Associate Software Engineer'],
+            ['Position', 'Associate Software Engineer'],
             ['Lives in', 'Westlake Village, CA'],
             ['Studied at', 'California Polytechnic State University, San Luis Obispo'],
-            ['Has degree in', 'B.S., Computer Science']
+            ['Degree in', 'B.S., Computer Science']
         ]
     }
 
@@ -43,19 +43,14 @@ define(["jquery", "app/utils"], function ($, Utils) {
     function createDescriptionRow() {
         var descriptionRow = $('<tr></tr>'),
             descriptionCell = $('<td></td>').attr('colspan', 2),
-            paragraph1 = $('<p></p>').addClass('indent'),
-            paragraph2 = $('<p></p>').addClass('indent'),
-            paragraph3 = $('<p></p>').addClass('indent');
+            paragraph1 = $('<p></p>'),//.addClass('indent'),
+            paragraph2 = $('<p></p>'),//.addClass('indent'),
+            paragraph3 = $('<p></p>');//.addClass('indent');
 
-        // TODO: Have the text come from a database/local file
-        paragraph1.text('I\'m a fairly recent computer science graduate who\'s diving into the profession of software engineering');
-        paragraph2.text('Here\'s a bit of my personal background. I grew up in California, ' +
-        'specifically the greater Los Angeles area. I come from a family of six and luckily we all get along... for the ' +
-        'most part. Growing up in a large family has taught me many things, such as getting along in frustrating situations ' +
-        'and learning when to go with the flow or hold my ground.');
-        paragraph3.text('Coming from a big family, you might think I\'d be on the louder and rowdier side, but actually,' +
-        ' I\'m quite the opposite. I\'m a fairly quiet guy with a pretty good sense of humour and I seem to get along great ' +
-        'with others with little effort.');
+        // TODO: Have the text come from an endpoint/database/local file
+        paragraph1.text("I'm a fairly recent computer science graduate diving into the profession of software engineering");
+        paragraph2.text("");
+        paragraph3.text("");
 
         descriptionCell
             .append(paragraph1)

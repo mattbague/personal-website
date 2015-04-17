@@ -46,6 +46,7 @@ html {
 
 body {
     background: transparent;
+    width: 100%;
 }
 
 a {
@@ -55,7 +56,7 @@ a {
 
 .container {
     background: transparent;
-    width: 100%;
+    min-width: 1100px;
     text-align: center;
 }
 
@@ -234,23 +235,23 @@ a {
 }
 
 .level:hover {
-    background-color: #FFFED3;
-    box-shadow: 1px 0px 1px #FFD0AB,
-    0px 1px 1px #95786A,
-    2px 1px 1px #FFD0AB,
-    1px 2px 1px #95786A,
-    3px 2px 1px #FFD0AB,
-    2px 3px 1px #95786A,
-    4px 3px 1px #FFD0AB,
-    3px 4px 1px #95786A,
-    5px 4px 1px #FFD0AB,
-    4px 5px 1px #95786A,
-    6px 5px 1px #FFD0AB,
-    5px 6px 1px #95786A,
-    7px 6px 1px #FFD0AB,
-    6px 7px 1px #95786A,
-    8px 7px 1px #FFD0AB,
-    7px 8px 1px #95786A;
+    background-color: #E4F0C7;
+    box-shadow: 1px 0px 1px #BDCF92,
+    0px 1px 1px #5B683A,
+    2px 1px 1px #BDCF92,
+    1px 2px 1px #5B683A,
+    3px 2px 1px #BDCF92,
+    2px 3px 1px #5B683A,
+    4px 3px 1px #BDCF92,
+    3px 4px 1px #5B683A,
+    5px 4px 1px #BDCF92,
+    4px 5px 1px #5B683A,
+    6px 5px 1px #BDCF92,
+    5px 6px 1px #5B683A,
+    7px 6px 1px #BDCF92,
+    6px 7px 1px #5B683A,
+    8px 7px 1px #BDCF92,
+    7px 8px 1px #5B683A;
 }
 
 .selected {
@@ -271,6 +272,10 @@ a {
     6px 7px 1px #95786A,
     8px 7px 1px #FFD0AB,
     7px 8px 1px #95786A;
+}
+
+.generic-entry {
+    padding:8px;
 }
 
 #home {

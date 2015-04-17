@@ -1,13 +1,13 @@
 define(["jquery", "app/utils"], function ($, Utils) {
     var section = $('<div></div>').addClass('section'),
         header = Utils.createHeader('"The most complicated skill is to be simple."', '- Dejan Stojanovic'),
-    // TODO: Read these lists from some sort of database or file...
-        languagesSubsection = createSubsection('Languages', ['Java', 'JavaScript', 'Groovy', 'SQL', 'Objective-C']),
-        frameworkAndLibrarySubsection = createSubsection('Frameworks/Libraries', ['require', 'JSON', 'jQuery + UI', 'React', 'Spring', 'JUnit/QUnit', 'Jackson', 'Spock', 'Mockito']),
+    // TODO: don't hard code these...
+        languagesSubsection = createSubsection('Languages', ['Java', 'Scala', 'JavaScript/CSS/HTML', 'SQL', 'Objective-C']),
+        frameworkAndLibrarySubsection = createSubsection('Frameworks/Libraries', ['require', 'jQuery + UI', 'Spring', 'JUnit/QUnit']),
         methodologiesSubsection = createSubsection('Methodologies', ['Pair Programming', 'Agile Development', 'TDD', 'OOP', 'REST', 'RDBMS', 'NoSQL']),
-        toolsSubsection = createSubsection('Tools', ['IntelliJ IDEA', 'Linux', 'Git', 'Maven', 'JSHint', 'Jenkins CI', 'Supervisor']),
-        platformsSubsection = createSubsection('Platforms', ['JVM', 'Elasticsearch', 'Node.js', 'Android', 'iOS']),
-        databaseSubsection = createSubsection('Databases', ['Cassandra', 'MongoDB', 'Oracle']);
+        toolsSubsection = createSubsection('Tools', ['IntelliJ IDEA', 'Linux', 'Git', 'Maven']),
+        platformsSubsection = createSubsection('Platforms', ['JVM', 'Android', 'iOS']),
+        databaseSubsection = createSubsection('Databases/Systems', ['Kafka', 'Elasticsearch', 'Cassandra', 'MongoDB', 'Oracle']);
 
     function createSubsection(listTitle, listArray) {
         var subsection = $('<div></div>').addClass('skillset'),
@@ -27,9 +27,9 @@ define(["jquery", "app/utils"], function ($, Utils) {
         .append(languagesSubsection)
         .append(frameworkAndLibrarySubsection)
         .append(methodologiesSubsection)
+        .append(databaseSubsection)
         .append(toolsSubsection)
-        .append(platformsSubsection)
-        .append(databaseSubsection);
+        .append(platformsSubsection);
 
     return section;
 });

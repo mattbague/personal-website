@@ -6,6 +6,7 @@ define(["jquery", "app/utils"], function ($, Utils) {
         header = Utils.createHeader('"Social media allows me to pick my times for social interaction."', '- Guy Kawasaki'),
         linkedinEntry = getContactFor(iconsPath + '/linked.png', 'Connect with me on LinkedIn', 'http://www.linkedin.com/in/matthewbague', 'linkedin-image'),
         phoneEntry = getContactFor(iconsPath + '/phone.png', '805.630.8700 (Cell)', 'tel:8056308700', 'phone-image'),
+        emailEntryTemp = getContactFor(iconsPath + '/email.png', 'mattbague' + '@' + 'gmail.com', 'mailto:mattbague@gmail.com', 'email-image'),
         emailEntry = getEmailForm(sendEmailForm());
 
 
@@ -83,10 +84,15 @@ define(["jquery", "app/utils"], function ($, Utils) {
         return formContainer
     }
 
+    function getTempEmail() {
+        return $('div')
+    }
+
     section
         .append(header)
         .append(linkedinEntry)
         .append(phoneEntry)
+        .append(emailEntryTemp)
         //.append(emailEntry);
     ;
 
