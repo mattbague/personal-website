@@ -8,15 +8,13 @@ define(["jquery"], function ($) {
         columnContainer = $('<div class="column-container opacity"></div>'),
         leftColumn = $('<div class="left-column"></div>'),
         rightColumn = $('<div class="right-column"></div>'),
-        footer = $('<div class="footer"></div>'),
-        linkBack = $('<span>Hosting provided by <a href="http://vlexofree.com/">VlexoFree Hosting</a></span>'),
+        footer = $('<div class="footer">Hosting provided by <a href="http://vlexofree.com/">VlexoFree Hosting</a></div>'),
         content = $('<div class="content"></div>').hide();
 
     function createLayout() {
         leftColumn.append(createNavi());
         rightColumn.append(content);
         columnContainer.append(leftColumn).append(rightColumn);
-        footer.append(linkBack);
 
         container
             .append(header)

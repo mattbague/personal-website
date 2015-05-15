@@ -22,7 +22,7 @@ define(["jquery", "app/utils"], function ($, Utils) {
     function createBasicInfoRow() {
         var quickRow = $('<tr></tr>'),
             pictureCell = $('<td></td>'),
-            picture = $('<img/>').attr('src', 'images/me_fancy.png').addClass('bio-image'),
+            picture = $('<img/>').attr('src', '/personal/images/me_cool.jpg').addClass('bio-image'),
             quickInfoCell = $('<td style="vertical-align: top"></td>'),
             quickInfo = $('<p></p>').addClass('bio');
 

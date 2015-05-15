@@ -2,11 +2,16 @@
 
 define(["jquery", "app/utils"], function ($, Utils) {
     var section = $('<div class=".section"></div>'),
+         email = 'mattbague'
+             + '@'
+             + 'gmail'
+             + '.'
+             + 'com',
         iconsPath = "personal/images/",
         header = Utils.createHeader('"Social media allows me to pick my times for social interaction."', '- Guy Kawasaki'),
         linkedinEntry = getContactFor(iconsPath + '/linked.png', 'Connect with me on LinkedIn', 'http://www.linkedin.com/in/matthewbague', 'linkedin-image'),
-        phoneEntry = getContactFor(iconsPath + '/phone.png', '805.630.8700 (Cell)', 'tel:8056308700', 'phone-image'),
-        emailEntryTemp = getContactFor(iconsPath + '/email.png', 'mattbague' + '@' + 'gmail.com', 'mailto:mattbague@gmail.com', 'email-image'),
+        phoneEntry = getContactFor(iconsPath + '/phone.png', '(Cell)', 'tel:', 'phone-image'),
+        emailEntryTemp = getContactFor(iconsPath + '/email.png', email, 'mailto:mattbague@gmail.com', 'email-image'),
         emailEntry = getEmailForm(sendEmailForm());
 
 
@@ -91,7 +96,7 @@ define(["jquery", "app/utils"], function ($, Utils) {
     section
         .append(header)
         .append(linkedinEntry)
-        .append(phoneEntry)
+        //.append(phoneEntry)
         .append(emailEntryTemp)
         //.append(emailEntry);
     ;
